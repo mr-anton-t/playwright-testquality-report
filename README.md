@@ -14,11 +14,11 @@ Run following commands:
 
 ### npm
 
-`npm install `
+`npm mr-anton-t/playwright-testquality-report `
 
 ### yarn
 
-`yarn add `
+`yarn add mr-anton-t/playwright-testquality-report`
 
 ## Configuration
 
