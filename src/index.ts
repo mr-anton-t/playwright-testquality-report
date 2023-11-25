@@ -76,7 +76,7 @@ class PlaywrightReportSummary implements Reporter {
         //tee.setStatusInTQ = 'Pass'
         //this.badTest.push(tee)
         //
-        console.log(`tag TC${key}`);
+        console.log(`tag TC${key}` );
 
         try {
           const testId = (await testGetMany({api: clientTQ.api, params: {key: key}})).data[0].id;
@@ -91,7 +91,7 @@ class PlaywrightReportSummary implements Reporter {
           if (resultRun.data.length === 0) {
             try {
 
-              throw Error(`Test TC${key} not found in run ${this.tqConfig.runIdTQ}`);
+            throw Error(`Test TC${key} not found in run ${this.tqConfig.runIdTQ}`);
             } catch (e) {
               // @ts-ignore
               console.log('Error ', e.message);

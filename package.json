@@ -6,7 +6,8 @@
   "scripts": {
     "build": "yarn version --patch && yarn clean && tsc --project ./tsconfig.json",
     "clean": "rimraf dist/*",
-    "test": "  playwright test --config=tests/playwright.config.ts"
+    "test": "  playwright test --config=tests/playwright.config.ts",
+    "testquality": "ts-node demo.ts"
   },
   "keywords": [
     "playwright",
