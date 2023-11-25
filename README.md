@@ -1,7 +1,9 @@
-#  Playwright Report in Testquality.com 
+#  Playwright Report for Testquality.com 
+![GitHub last commit](https://img.shields.io/github/last-commit/mr-anton-t/playwright-testquality-report)
+![GitHub License](https://img.shields.io/github/license/mr-anton-t/playwright-testquality-report)
+![Visits Badg](https://komarev.com/ghpvc/?username=mr-anton-t-playwright-testquality-report&style=flat-square&color=lightgrey&label=views)
 
-Testquality reporter for Playwright.
-It can be convenient to publish test results when running regression
+It can be convenient to publish test results when running regression.
 
 
 ## Version
@@ -10,11 +12,11 @@ Demo - not stable version
 
 ## Installation 
 
-Run following commands:
+Run the following commands:
 
 ### npm
 
-`npm mr-anton-t/playwright-testquality-report `
+`npm mr-anton-t/playwright-testquality-report`
 
 ### yarn
 
