@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist",
+    "rootDirs": ["src"],
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "ES2020",
+    "moduleResolution": "node",
+//    "rootDir": "./",
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+
+  },
+  "exclude": ["node_modules", "dist", "tests", "test-results"],
+  "include": [
+    "src",
+    "src/types.d.ts"
+  ]
+}

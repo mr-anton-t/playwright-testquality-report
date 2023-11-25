@@ -1,0 +1,44 @@
+{
+  "name": "@mr-anton-t/playwright-testquality-report",
+  "version": "0.0.1",
+  "description": "TestQuality report of your playwright test results",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "yarn version --patch && yarn clean && tsc --project ./tsconfig.json",
+    "clean": "rimraf dist/*",
+    "test": "  playwright test --config=tests/playwright.config.ts"
+  },
+  "keywords": [
+    "playwright",
+    "report",
+    "testquality",
+    "test",
+    "quality"
+  ],
+  "author": "mr-anton-t",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-anton-t/playwright-testquality-report.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mr-anton-t/playwright-testquality-report/issues"
+  },
+  "homepage": "https://github.com/mr-anton-t/playwright-testquality-report#readme",
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {
+    "@testquality/sdk": "github:mr-anton-t/test-quality-sdk"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.37.1",
+    "@types/node": "18.18.12",
+    "eslint": "8.54.0",
+    "ts-node": "10.9.1",
+    "typescript": "^4.8.4"
+  }
+}
