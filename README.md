@@ -1,7 +1,7 @@
 #  Playwright Report for Testquality.com 
 ![GitHub last commit](https://img.shields.io/github/last-commit/mr-anton-t/playwright-testquality-report)
 ![GitHub License](https://img.shields.io/github/license/mr-anton-t/playwright-testquality-report)
-![Visits Badg](https://komarev.com/ghpvc/?username=mr-anton-t-playwright-testquality-report&style=flat-square&color=lightgrey&label=views)
+![Visits Badg](https://komarev.com/ghpvc/?username=mr-anton-t-report&style=flat-square&color=lightgrey&label=views)
 
 It can be convenient to publish test results when running regression.
 
