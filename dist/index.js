@@ -31,16 +31,28 @@ class PlaywrightReportSummary {
         this.tcRegex = /@TC\d+/g;
         this.testlist = [];
         this.resultList = [];
-        if (!options.configFile) {
-            throw new Error('configFile is required');
+        console.log(!options.configFile, !options.customOption);
+        console.log(!!options.configFile && !!options.customOption);
+        if (!options.configFile && !options.customOption) {
+            throw new Error('configFile or customOption is required');
         }
-        //@todo need to use secret for CI
-        this.tqConfig = JSON.parse(fs.readFileSync(options.configFile).toString());
+        if (options.configFile && options.customOption) {
+            throw new Error('use only the configFile  or customOption');
+        }
+        let conf = undefined;
+        if (options.configFile) {
+            conf = JSON.parse(fs.readFileSync(options.configFile).toString());
+        }
+        else {
+            conf = options.customOption;
+        }
+        this.tqConfig = conf;
         this.credsTQ = {
             email: this.tqConfig.email,
             password: this.tqConfig.password,
         };
     }
+    ;
     async onTestEnd(test) {
         this.testlist.push({
             "test": test.title,
@@ -110,7 +122,7 @@ class PlaywrightReportSummary {
                     if (test.runResult === 'passed') {
                         for (const step of steps.data) {
                             console.log('start set to step.id ', step.id, ' result ', this.tqConfig.passTQid, ' for test ', testId, ' run ', resultRun.data[0].id);
-                            await (0, sdk_1.runResultStepUpdateOne)(step.id, { 'status_id': this.tqConfig.passTQid, }, { api: clientTQ.api });
+                            (await (0, sdk_1.runResultStepUpdateOne)(step.id, { 'status_id': this.tqConfig.passTQid, }, { api: clientTQ.api }));
                         }
                         //@todo check final status
                         console.log('passed');

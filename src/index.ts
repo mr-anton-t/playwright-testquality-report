@@ -8,25 +8,37 @@ import {TestCase} from "@playwright/test/types/testReporter";
 import {CredsTQ, ConfigTQ} from "./types";
 
 class PlaywrightReportSummary implements Reporter {
-
   private tqConfig: ConfigTQ;
   private tcRegex: RegExp = /@TC\d+/g;
   private testlist: { [key: string]: any }[] = [];
   private resultList: { [key: string]: any }[] = [];
   private credsTQ: CredsTQ;
 
-  constructor(options: { configFile?: string; } = {},) {
-    if (!options.configFile) {
-      throw new Error('configFile is required');
+  constructor(options: { configFile?: string;  customOption?: ConfigTQ } = {},) {
+     console.log(!options.configFile, !options.customOption);
+     console.log( !!options.configFile && !!options.customOption )
+    if (!options.configFile && !options.customOption) {
+      throw new Error('configFile or customOption is required');
     }
-    //@todo need to use secret for CI
 
-    this.tqConfig = JSON.parse(fs.readFileSync(options.configFile).toString());
+    if (options.configFile && options.customOption) {
+      throw new Error('use only the configFile  or customOption');
+    }
+
+    let conf : ConfigTQ | undefined = undefined;
+
+    if (options.configFile ) {
+      conf = JSON.parse(fs.readFileSync(options.configFile).toString());
+    } else  {
+      conf = options.customOption;
+    }
+
+    this.tqConfig = conf!;
     this.credsTQ = {
       email: this.tqConfig.email,
       password: this.tqConfig.password,
-    };
-  }
+    }
+  };
 
   async onTestEnd(test: TestCase) {
     this.testlist.push({
