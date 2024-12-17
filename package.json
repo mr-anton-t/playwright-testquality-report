@@ -1,6 +1,6 @@
 {
   "name": "@mr-anton-t/playwright-testquality-report",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "TestQuality report of your playwright test results",
   "main": "./dist/index.js",
   "scripts": {
