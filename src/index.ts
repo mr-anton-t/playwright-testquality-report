@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-
 import {Reporter} from '@playwright/test/reporter';
 
 import * as console from "console";
@@ -14,14 +13,12 @@ class PlaywrightReportSummary implements Reporter {
   private resultList: { [key: string]: any }[] = [];
   private credsTQ: CredsTQ;
 
-  constructor(options: { configFile?: string;  customOption?: ConfigTQ } = {},) {
-     console.log(!options.configFile, !options.customOption);
-     console.log( !!options.configFile && !!options.customOption )
-    if (!options.configFile && !options.customOption) {
+  constructor(options: { configFile?: string;  options?: ConfigTQ } = {}) {
+    if (!options.configFile && !options.options) {
       throw new Error('configFile or customOption is required');
     }
 
-    if (options.configFile && options.customOption) {
+    if (options.configFile && options.options) {
       throw new Error('use only the configFile  or customOption');
     }
 
@@ -30,7 +27,7 @@ class PlaywrightReportSummary implements Reporter {
     if (options.configFile ) {
       conf = JSON.parse(fs.readFileSync(options.configFile).toString());
     } else  {
-      conf = options.customOption;
+      conf = options.options;
     }
 
     this.tqConfig = conf!;

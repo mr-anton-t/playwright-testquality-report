@@ -10,7 +10,7 @@ declare class PlaywrightReportSummary implements Reporter {
     private credsTQ;
     constructor(options?: {
         configFile?: string;
-        customOption?: ConfigTQ;
+        options?: ConfigTQ;
     });
     onTestEnd(test: TestCase): Promise<void>;
     onEnd(): Promise<void>;

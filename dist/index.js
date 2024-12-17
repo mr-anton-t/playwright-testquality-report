@@ -31,12 +31,10 @@ class PlaywrightReportSummary {
         this.tcRegex = /@TC\d+/g;
         this.testlist = [];
         this.resultList = [];
-        console.log(!options.configFile, !options.customOption);
-        console.log(!!options.configFile && !!options.customOption);
-        if (!options.configFile && !options.customOption) {
+        if (!options.configFile && !options.options) {
             throw new Error('configFile or customOption is required');
         }
-        if (options.configFile && options.customOption) {
+        if (options.configFile && options.options) {
             throw new Error('use only the configFile  or customOption');
         }
         let conf = undefined;
@@ -44,7 +42,7 @@ class PlaywrightReportSummary {
             conf = JSON.parse(fs.readFileSync(options.configFile).toString());
         }
         else {
-            conf = options.customOption;
+            conf = options.options;
         }
         this.tqConfig = conf;
         this.credsTQ = {
