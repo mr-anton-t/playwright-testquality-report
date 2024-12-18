@@ -33,6 +33,29 @@ Modify your `playwright.config.ts` file to include the reporter:
     ['dot']
   ]
 ```
+or
+```typescript
+  reporter:
+  [
+    ['@mr-anton-t/playwright-testquality-report',
+      {
+         options: {
+           email: 'user@email',
+           password: "passwords",
+           clientName: 'clientName',
+           baseUrl: 'https://api.testquality.com',
+           clientId: '2',
+           clientSecret: 'clientSecret',
+           passTQid: 22193,
+           failTQid: 22197,
+           runIdTQ: 209986
+         }
+      }
+    ],
+    ['html'], // other reporters
+    ['dot']
+  ]
+```
 
 ## Default Output 
 

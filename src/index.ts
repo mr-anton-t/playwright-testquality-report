@@ -1,10 +1,9 @@
-import * as fs from 'fs';
 import {Reporter} from '@playwright/test/reporter';
 
-import * as console from "console";
 import {ClientSdk, runResultGetMany, runResultStepGetMany, runResultStepUpdateOne, testGetMany} from "@testquality/sdk";
 import {TestCase} from "@playwright/test/types/testReporter";
 import {CredsTQ, ConfigTQ} from "./types";
+import * as fs from 'fs';
 
 class PlaywrightReportSummary implements Reporter {
   private tqConfig: ConfigTQ;
@@ -82,9 +81,7 @@ class PlaywrightReportSummary implements Reporter {
       if (test.tag.length == 1) {
         const key = parseInt(test.tag[0]);
         data.decision = 'todo'
-        //tee.setStatusInTQ = 'Pass'
-        //this.badTest.push(tee)
-        //
+
         console.log(`tag TC${key}`);
 
         try {
@@ -99,8 +96,7 @@ class PlaywrightReportSummary implements Reporter {
 
           if (resultRun.data.length === 0) {
             try {
-
-              throw Error(`Test TC${key} not found in run ${this.tqConfig.runIdTQ}`);
+              throw `Test TC${key} not found in run ${this.tqConfig.runIdTQ}`;
             } catch (e) {
               // @ts-ignore
               console.log('Error ', e.message);

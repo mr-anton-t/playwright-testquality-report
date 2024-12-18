@@ -23,9 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = __importStar(require("fs"));
-const console = __importStar(require("console"));
 const sdk_1 = require("@testquality/sdk");
+const fs = __importStar(require("fs"));
 class PlaywrightReportSummary {
     constructor(options = {}) {
         this.tcRegex = /@TC\d+/g;
@@ -90,9 +89,6 @@ class PlaywrightReportSummary {
             if (test.tag.length == 1) {
                 const key = parseInt(test.tag[0]);
                 data.decision = 'todo';
-                //tee.setStatusInTQ = 'Pass'
-                //this.badTest.push(tee)
-                //
                 console.log(`tag TC${key}`);
                 try {
                     const testId = (await (0, sdk_1.testGetMany)({ api: clientTQ.api, params: { key: key } })).data[0].id;
@@ -103,7 +99,7 @@ class PlaywrightReportSummary {
                     });
                     if (resultRun.data.length === 0) {
                         try {
-                            throw Error(`Test TC${key} not found in run ${this.tqConfig.runIdTQ}`);
+                            throw `Test TC${key} not found in run ${this.tqConfig.runIdTQ}`;
                         }
                         catch (e) {
                             // @ts-ignore
