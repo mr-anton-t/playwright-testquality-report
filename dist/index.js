@@ -51,11 +51,21 @@ class PlaywrightReportSummary {
     }
     ;
     async onTestEnd(test) {
+        let tag = (test.title.match(this.tcRegex) || []).map(t => t.substring(3));
+        if (tag.length === 0) {
+            const tagFromTags = (test.tags || [])
+                .map(t => typeof t === 'string' ? t : t.name)
+                .filter(t => this.tcRegex.test(t))
+                .map(t => t.substring(3));
+            if (tagFromTags.length > 0) {
+                tag = tagFromTags;
+            }
+        }
         this.testlist.push({
             "test": test.title,
             "location": test.location.file,
             "runResult": test.results[test.results.length - 1].status,
-            "tag": (test.title.match(this.tcRegex) || []).map(t => t.substring(3))
+            "tag": tag
         });
     }
     async onEnd() {
